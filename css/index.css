@@ -1,0 +1,35 @@
+body {
+	font-family: "Roboto", sans-serif;
+}
+
+core-toolbar {
+	background: #03A9F4;
+	color: #FFFFFF;
+}
+
+core-header-panel {
+	background: #B3E5FC;
+}
+
+#login-container {
+	display: block;
+	width: 400px;
+	height: 300px;
+	margin: 20px auto;
+	padding: 16px;
+	border-radius: 2px;
+	background: #FFFFFF;
+}
+
+#login-container h2 {
+	font-weight: 400;
+}
+
+/*.dark-primary-color{background:#0288D1;}
+.default-primary-color{background:#03A9F4;}
+.light-primary-color{background:#B3E5FC;}
+.text-primary-color{color:#FFFFFF;}
+.accent-color{background:#FF9800;}
+.primary-text-color{color:#212121;}
+.secondary-text-color{color:#727272;}
+.divider-color{border-color:#B6B6B6;}*/
