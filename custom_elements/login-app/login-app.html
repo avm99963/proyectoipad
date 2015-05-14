@@ -1,0 +1,34 @@
+<polymer-element layout vertical on-key-press="{{keypressHandler}}" name="login-app">
+  <template>
+    <core-header-panel flex>
+      <core-toolbar id="mainheader">
+        <span><content></content></span>
+      </core-toolbar>
+      <paper-shadow id="login-container" z="2">
+        <h2>Iniciar sesión</h2>
+        <form action="../../login.php" method="POST" autocomplete="off" id="form">
+          <paper-input-decorator label="Usuario" floatingLabel><input is="core-input" type"text"></paper-input-decorator>
+          <paper-input-decorator label="Contraseña" floatingLabel><input is="core-input" type="password"></paper-input-decorator>
+          <paper-button id="login" raised on-click="{{login}}">Comprobar</paper-button>
+        </form>
+      </paper-shadow>
+    </core-header-panel>
+    <link rel="stylesheet" href="login-app.css">
+  </template>
+
+  <link rel="import" href="../../bower_components/polymer/polymer.html">
+  <link rel="import" href="../../bower_components/core-elements/core-elements.html">
+  <link rel="import" href="../../bower_components/paper-elements/paper-elements.html">
+  <link rel="import" href="../../bower_components/font-roboto/roboto.html">
+
+  <script>
+    Polymer({
+      login: function() {
+        this.$.form.submit();
+      },
+      keypressHandler: function(event, detail, sender) {
+        console.log(event);
+      }
+    });
+  </script>
+</polymer-element>

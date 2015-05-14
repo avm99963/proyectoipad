@@ -1,4 +1,4 @@
-body {
+:host {
 	font-family: "Roboto", sans-serif;
 }
 
@@ -23,6 +23,12 @@ core-header-panel {
 
 #login-container h2 {
 	font-weight: 400;
+}
+
+#login-container paper-button {
+	margin: 12px 0;
+	background: #FF9800;
+	color: white;
 }
 
 /*.dark-primary-color{background:#0288D1;}
