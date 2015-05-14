@@ -1,0 +1,54 @@
+<polymer-element layout vertical on-keypress="{{keypressHandler}}" attributes="appname" name="install-app">
+  <template>
+    <core-header-panel flex>
+      <core-toolbar id="mainheader">
+        <span>{{appname}}</span>
+      </core-toolbar>
+      <paper-shadow id="login-container" z="2">
+        <h2>Instalar app</h2>
+        <form action="../../install.php" method="POST" autocomplete="off" id="form">
+          <input type="hidden" name="sent" value="1">
+          <p>Rellena el siguiente formulario con los datos del primer usuario administrador para configurar la base de datos:</p>
+          <paper-input-decorator label="Usuario" floatingLabel error="¡Este campo es obligatorio!" id="username"><input is="core-input" type"text" required name="username"></paper-input-decorator>
+          <paper-input-decorator label="Nombre" floatingLabel error="¡Este campo es obligatorio!" id="name"><input is="core-input" type"text" required name="name"></paper-input-decorator>
+          <paper-input-decorator label="Apellidos" floatingLabel error="¡Este campo es obligatorio!" id="surname"><input is="core-input" type"text" required name="surname"></paper-input-decorator>
+          <paper-input-decorator label="Email" floatingLabel error="¡Este campo es obligatorio!" id="email"><input is="core-input" type"email" required name="email"></paper-input-decorator>
+          <paper-input-decorator label="Contraseña" floatingLabel error="¡Este campo es obligatorio!" id="password"><input is="core-input" type="password" required name="password"></paper-input-decorator>
+          <paper-button id="install" raised on-click="{{install}}">Comprobar</paper-button>
+          <input type="submit" style="display:none" name="submitButton" id="submitButton">
+        </form>
+      </paper-shadow>
+    </core-header-panel>
+    <link rel="stylesheet" href="../../css/app-styles.css">
+  </template>
+
+  <link rel="import" href="../../bower_components/polymer/polymer.html">
+  <link rel="import" href="../../bower_components/core-elements/core-elements.html">
+  <link rel="import" href="../../bower_components/paper-elements/paper-elements.html">
+  <link rel="import" href="../../bower_components/font-roboto/roboto.html">
+
+  <script>
+    Polymer({
+      install: function() {
+        /*var check = ["username", "name", "surname", "email", "password"];
+        var enter = true;
+        for (var i = 0; i < check.length; i++) {
+          if (document.querySelector("html /deep/ input[name='"+check[i]+"']").value == "") {
+            document.querySelector("html /deep/ #"+check[i]).setAttribute("isInvalid", "true");
+            enter = false;
+          } else {
+            document.querySelector("html /deep/ #"+check[i]).setAttribute("isInvalid", "false");
+          }
+        }
+        if (enter) {*/
+          this.$.submitButton.click();
+        //}
+      },
+      keypressHandler: function(event, detail, sender) {
+        if (event.keyCode == 13) {
+          this.install();
+        }
+      }
+    });
+  </script>
+</polymer-element>

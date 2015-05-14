@@ -1,0 +1,28 @@
+:host {
+	font-family: "Roboto", sans-serif;
+}
+
+.alert {
+	display: block;
+	/*border: solid 1px #E65100;*/
+	background: #FB8C00;
+	color: white;
+	border-radius: 4px;
+	margin: 8px 0;
+	padding: 12px;
+}
+
+.alert[data-type="danger"] {
+	/*border: solid 1px #B71C1C;*/
+	background: #E53935;
+}
+
+.alert[data-type="warning"] {
+	/*border: solid 1px #E65100;*/
+	background: #FB8C00;
+}
+
+.alert[data-type="info"] {
+	/*border: solid 1px #01579B;*/
+	background: #039BE5;
+}

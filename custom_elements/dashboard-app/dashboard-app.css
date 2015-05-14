@@ -1,0 +1,22 @@
+:host {
+	font-family: "Roboto", sans-serif;
+}
+
+core-toolbar {
+	background: #03A9F4;
+	color: #FFFFFF;
+}
+
+core-header-panel {
+  background: white;
+}
+
+.content {
+  padding: 20px;
+}
+
+/* drawer is always visible on a wide screen
+   so menu button isn't required */
+core-drawer-panel:not([narrow]) #navicon {
+  display: none;
+}

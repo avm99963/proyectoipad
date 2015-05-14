@@ -8,7 +8,7 @@ date_default_timezone_set("Europe/Madrid");
 require("config.php");
 
 // Aquí se accede a la BD y a la sesión
-$con = @mysqli_connect($host_db, $usuario_db, $clave_db, $nombre_db) or die("<center>Check Mysqli settings in config.php</center>"); // Conectamos y seleccionamos BD
+$con = @mysqli_connect($CONF["host_db"], $CONF["usuario_db"], $CONF["clave_db"], $CONF["nombre_db"]) or die("<center>Check Mysqli settings in config.php</center>"); // Conectamos y seleccionamos BD
 
 session_start();
 
@@ -61,7 +61,23 @@ function myErrorHandler($errno, $errstr, $errfile, $errline) {
 $old_error_handler = set_error_handler("myErrorHandler");
 
 // Aquí van todas las funciones
-function anuncio()
-{
-	echo $GLOBALS['anuncio'];
+function loggedin() {
+	if (isset($_SESSION['id'])) {
+		return TRUE;
+	} else {
+		return FALSE;
+	}
+}
+
+function istechnician() {
+	if (!isset($_SESSION['id']))
+        return FALSE;
+	$id = $_SESSION['id'];
+	$query = mysqli_query($GLOBALS['con'], "SELECT type FROM users WHERE id = '".$id."'");
+	$row = mysqli_fetch_assoc($query);
+	if ($row["type"] == 1) {
+		return true;
+	} else {
+		return false;
+	}
 }

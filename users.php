@@ -1,17 +1,15 @@
 <?php
 require_once("core.php");
-if (mysqli_query($con, "SELECT * FROM users") === FALSE) {
-  header("Location: install.php");
+if (!loggedin()) {
+  header("Location: index.php");
 }
-if (loggedin()) {
-  header("Location: dashboard.php");
-}
+if (istechnician()) {
 ?>
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">
-    <title><?=$CONF["appname"]?></title>
+    <title>Usuarios – <?=$CONF["appname"]?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
     <script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
@@ -21,19 +19,20 @@ if (loggedin()) {
     <link rel="import" href="bower_components/core-elements/core-elements.html">
     <link rel="import" href="bower_components/paper-elements/paper-elements.html">
     <link rel="import" href="bower_components/font-roboto/roboto.html">
-    <link rel="import" href="custom_elements/login-app/login-app.html">
+    <link rel="import" href="bower_components/core-icons/social-icons.html">
+    <link rel="import" href="custom_elements/dashboard-app/dashboard-app.html">
+    <link rel="import" href="custom_elements/dashboard-users/dashboard-users.html">
+    <link rel="import" href="custom_elements/user-card/user-card.html">
     <link rel="import" href="custom_elements/common-elements/common-elements.html">
   </head>
   <body fullbleed layout vertical unresolved>
-    <login-app appname="<?=$CONF["appname"]?>" flex>
-      <?php
-      if (isset($_GET["msg"])) {
-        if ($_GET["msg"] == "empty")
-          echo "<ipad-alert type='info'>Por favor, rellena todo el formulario</ipad-alert>";
-        if ($_GET["msg"] == "loginwrong")
-          echo "<ipad-alert type='danger'>Los datos de inicio de sesión no eran correctos</ipad-alert>";
-      }
-      ?>
-    </login-app>
+    <dashboard-app appname="<?=$CONF["appname"]?>" sidebar="users" flex>
+      <dashboard-users></dashboard-users>
+    </dashboard-app>
   </body>
 </html>
+<?php
+} else {
+  header("Location: index.php");
+}
+?>

@@ -1,36 +1,3 @@
-:host {
-	font-family: "Roboto", sans-serif;
-}
-
-core-toolbar {
-	background: #03A9F4;
-	color: #FFFFFF;
-}
-
-core-header-panel {
-	background: #B3E5FC;
-}
-
-#login-container {
-	display: block;
-	width: 400px;
-	height: 300px;
-	margin: 20px auto;
-	padding: 16px;
-	border-radius: 2px;
-	background: #FFFFFF;
-}
-
-#login-container h2 {
-	font-weight: 400;
-}
-
-#login-container paper-button {
-	margin: 12px 0;
-	background: #FF9800;
-	color: white;
-}
-
 /*.dark-primary-color{background:#0288D1;}
 .default-primary-color{background:#03A9F4;}
 .light-primary-color{background:#B3E5FC;}

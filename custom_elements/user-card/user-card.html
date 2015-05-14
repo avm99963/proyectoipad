@@ -1,0 +1,20 @@
+<polymer-element layout vertical attributes="userid name username email area" name="user-card">
+  <template>
+    <paper-shadow z="1">
+      <h3>{{name}}</h3>
+      <p><b>Nickname</b>: {{username}}</p>
+      <p><b>Correo electrónico</b>: {{email}}</p>
+      <p><b>Área</b>: {{area}}</p>
+      <paper-icon-button icon="history" on-click="{{history}}"></paper-icon-button> <paper-icon-button icon="create" on-click="{{edit}}"></paper-icon-button>
+    </paper-shadow>
+    <link rel="stylesheet" href="user-card.css">
+  </template>
+
+  <script>
+    Polymer({
+      history: function(e) {
+        console.log(e);
+      }
+    });
+  </script>
+</polymer-element>

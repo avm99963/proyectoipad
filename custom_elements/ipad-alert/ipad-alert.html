@@ -1,0 +1,19 @@
+<polymer-element layout vertical on-keypress="{{keypressHandler}}" attributes="type" name="ipad-alert">
+  <template>
+    <paper-shadow class="alert" data-type="{{type}}" z="1">
+      <content></content>
+    </paper-shadow>
+    <link rel="stylesheet" href="ipad-alert.css">
+  </template>
+
+  <link rel="import" href="../../bower_components/polymer/polymer.html">
+  <link rel="import" href="../../bower_components/core-elements/core-elements.html">
+  <link rel="import" href="../../bower_components/paper-elements/paper-elements.html">
+  <link rel="import" href="../../bower_components/font-roboto/roboto.html">
+
+  <script>
+    Polymer({
+
+    });
+  </script>
+</polymer-element>

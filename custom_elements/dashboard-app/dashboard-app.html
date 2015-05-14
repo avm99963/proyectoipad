@@ -1,0 +1,43 @@
+<polymer-element layout vertical attributes="appname sidebar" name="dashboard-app">
+  <template>
+    <core-drawer-panel flex id="drawerPanel">
+      <core-header-panel drawer>
+        <core-toolbar id="navheader">
+          <span>Menú</span>
+        </core-toolbar>
+        <core-menu valueattr="id" selected="{{sidebar}}" on-core-select="{{itwasselected}}">
+          <core-item id="dashboard" data-url="dashboard.php" label="Panel de control" icon="home"></core-item>
+          <core-item id="users" data-url="users.php" label="Usuarios" icon="social:people"></core-item>
+        </core-menu>
+      </core-header-panel>
+
+      <core-header-panel main>
+        <core-toolbar id="mainheader">
+          <paper-icon-button id="navicon" icon="menu" on-click="{{drawer}}"></paper-icon-button>
+          <span flex>{{appname}}</span>
+        </core-toolbar>
+        <div class="content">
+          <content></content>
+        </div>
+      </core-header-panel>
+    </core-drawer-panel>
+    <link rel="stylesheet" href="dashboard-app.css">
+  </template>
+
+  <script>
+    Polymer({
+      drawer: function() {
+        this.$.drawerPanel.togglePanel();
+      },
+      itwasselected: function(e, detail) {
+        if (detail.isSelected) {
+          var selectedItem = detail.item;
+          var thislocation = window.location.pathname.split("/");
+          if (detail.item.getAttribute("data-url") !== thislocation[thislocation.length - 1]) {
+            window.location = detail.item.getAttribute("data-url");
+          }
+        }
+      }
+    });
+  </script>
+</polymer-element>
