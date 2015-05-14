@@ -1,5 +1,6 @@
 <?php
 require_once("config.php");
+require_once("lib/password.php");
 
 // Timezone
 date_default_timezone_set("Europe/Madrid");
