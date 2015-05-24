@@ -1,0 +1,11 @@
+paper-spinner {
+	position: absolute;
+	left: Calc(50% - 28px);
+}
+
+#add {
+	position: absolute;
+	bottom: 16px;
+	right: 16px;
+	background: #FF9800;
+}

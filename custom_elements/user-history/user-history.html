@@ -1,0 +1,27 @@
+<link rel="import" href="../../bower_components/paper-shadow/paper-shadow.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+
+<polymer-element layout vertical attributes="userid selectedPage" name="user-history">
+  <template>
+    <core-ajax auto url="../../ajax/user-history.php" params='{"user": 1}' method="GET" handleAs="json" response="{{response}}"></core-ajax>
+    <paper-shadow slide-up="{{selectedPage === 2}}" cross-fade="{{selectedPage === 0}}" z="1">
+      <paper-icon-button id="close" icon="close" on-click="{{close}}"></paper-icon-button>
+      <h3 hero hero-id="name">{{response.user.name}} {{response.user.surname}}</h3>
+      <div>
+        <p><b>Nickname</b>: {{response.user.username}}</p>
+        <p><b>Correo electrónico</b>: {{response.user.email}}</p>
+        <p><b>Área</b>: {{response.user.area}}</p>
+      </div>
+      <p>THIS SECTION IS UNDER DEVELOPMENT...</p>
+    </paper-shadow>
+    <link rel="stylesheet" href="user-history.css">
+  </template>
+
+  <script>
+    Polymer({
+      close: function(e) {
+        this.selectedPage = 0;
+      }
+    });
+  </script>
+</polymer-element>

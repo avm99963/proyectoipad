@@ -1,10 +1,15 @@
-<polymer-element layout vertical attributes="userid name username email area" name="user-card">
+<link rel="import" href="../../bower_components/paper-shadow/paper-shadow.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+
+<polymer-element layout vertical attributes="userid name username email area selectedPage" name="user-card">
   <template>
-    <paper-shadow z="1">
-      <h3>{{name}}</h3>
-      <p><b>Nickname</b>: {{username}}</p>
-      <p><b>Correo electrónico</b>: {{email}}</p>
-      <p><b>Área</b>: {{area}}</p>
+    <paper-shadow cross-fade z="1">
+      <h3 hero hero-id="name">{{name}}</h3>
+      <div>
+        <p><b>Nickname</b>: {{username}}</p>
+        <p><b>Correo electrónico</b>: {{email}}</p>
+        <p><b>Área</b>: {{area}}</p>
+      </div>
       <paper-icon-button icon="history" on-click="{{history}}"></paper-icon-button> <paper-icon-button icon="create" on-click="{{edit}}"></paper-icon-button>
     </paper-shadow>
     <link rel="stylesheet" href="user-card.css">
@@ -13,7 +18,10 @@
   <script>
     Polymer({
       history: function(e) {
-        console.log(e);
+        this.selectedPage = 1;
+      },
+      edit: function(e) {
+        this.selectedPage = 2;
       }
     });
   </script>

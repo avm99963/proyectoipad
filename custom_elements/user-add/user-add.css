@@ -1,0 +1,18 @@
+paper-shadow {
+	padding: 16px;
+}
+
+#close {
+	position: absolute;
+	right: 16px;
+}
+
+paper-input-decorator {
+	max-width: 400px;
+}
+
+paper-button {
+	margin: 12px 0;
+	background: #FF9800;
+	color: #FFFFFF;
+}

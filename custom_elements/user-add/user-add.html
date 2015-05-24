@@ -1,0 +1,45 @@
+<link rel="import" href="../../bower_components/paper-shadow/paper-shadow.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input-decorator.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../../bower_components/paper-dropdown/paper-dropdown.html">
+<link rel="import" href="../../bower_components/core-menu/core-menu.html">
+<link rel="import" href="../../bower_components/paper-item/paper-item.html">
+
+<polymer-element layout vertical attributes="selectedPage" name="user-add">
+  <template>
+    <paper-shadow slide-up="{{selectedPage === 2}}" cross-fade="{{selectedPage === 0}}" z="1">
+      <paper-icon-button id="close" icon="close" on-click="{{close}}"></paper-icon-button>
+      <h3 hero hero-id="name">Añadir usuario</h3>
+      <paper-dropdown-menu label="Tipo de usuario">
+        <paper-dropdown class="dropdown">
+          <core-menu selectedIndex="{{technician}}" class="menu">
+            <paper-item>Propietario</paper-item>
+            <paper-item>Técnico</paper-item>
+          </core-menu>
+        </paper-dropdown>
+      </paper-dropdown-menu>
+      <paper-input-decorator label="Usuario" floatingLabel id="username" hidden?="{{technician < 1}}"><input is="core-input" type"text" required autocomplete="off" name="username"></paper-input-decorator>
+      <paper-input-decorator label="Nombre" floatingLabel error="¡Este campo es obligatorio!" id="name"><input is="core-input" type"text" required autocomplete="off" name="name"></paper-input-decorator>
+      <paper-input-decorator label="Apellidos" floatingLabel error="¡Este campo es obligatorio!" id="surname"><input is="core-input" type"text" required autocomplete="off" name="surname"></paper-input-decorator>
+      <paper-input-decorator label="Area" floatingLabel error="¡Este campo es obligatorio!" id="password"><input is="core-input" type="text" required autocomplete="off" name="area"></paper-input-decorator>
+      <paper-input-decorator label="Email" floatingLabel error="¡Este campo es obligatorio!" id="email"><input is="core-input" type"email" required autocomplete="off" name="email"></paper-input-decorator>
+      <paper-input-decorator label="Contraseña" floatingLabel error="¡Este campo es obligatorio!" id="password"><input is="core-input" type="password" required name="password"></paper-input-decorator>
+      <paper-button id="install" raised on-click="{{add}}">Añadir</paper-button>
+    </paper-shadow>
+    <link rel="stylesheet" href="user-add.css">
+  </template>
+
+  <script>
+    Polymer({
+      close: function(e) {
+        this.selectedPage = 0;
+      },
+      add: function() {
+        this.fire("user-added");
+        this.close();
+      }
+    });
+  </script>
+</polymer-element>

@@ -1,0 +1,12 @@
+:host {
+	
+}
+
+#close {
+	position: absolute;
+	right: 16px;
+}
+
+paper-shadow {
+	padding: 16px;
+}

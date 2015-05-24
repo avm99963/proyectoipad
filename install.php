@@ -12,11 +12,9 @@ require_once("core.php");
 
     <link rel="import" href="bower_components/polymer/polymer.html">
 
-    <link rel="import" href="bower_components/core-elements/core-elements.html">
-    <link rel="import" href="bower_components/paper-elements/paper-elements.html">
-    <link rel="import" href="bower_components/font-roboto/roboto.html">
     <link rel="import" href="custom_elements/install-app/install-app.html">
     <link rel="import" href="custom_elements/common-elements/common-elements.html">
+    <link rel="import" href="bower_components/font-roboto/roboto.html">
   </head>
   <body fullbleed layout vertical unresolved>
     <?php

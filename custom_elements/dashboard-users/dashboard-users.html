@@ -1,27 +1,52 @@
+<link rel="import" href="../user-card/user-card.html">
+<link rel="import" href="../user-history/user-history.html">
+<link rel="import" href="../user-add/user-add.html">
+<link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
+<link rel="import" href="../../bower_components/paper-spinner/paper-spinner.html">
+<link rel="import" href="../../bower_components/core-animated-pages/core-animated-pages.html">
+<link rel="import" href="../../bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="../../bower_components/paper-toast/paper-toast.html">
+<link href="../../bower_components/core-animated-pages/transitions/slide-up.html" rel="import">
+<link href="../../bower_components/core-animated-pages/transitions/cross-fade.html" rel="import">
+<link href="../../bower_components/core-animated-pages/transitions/hero-transition.html" rel="import">
+
 <polymer-element layout vertical name="dashboard-users">
   <template>
+    <core-ajax id="ajax" auto url="../../ajax/users.php" handleAs="json" response="{{response}}" loading="{{loading}}"></core-ajax>
+    <paper-spinner id="loading" active="{{loading}}"></paper-spinner>
     <div flex>
-      <user-card userid="1" name="Adrià Vilanova Martínez" username="avm99963" email="jocdeladria@gmail.com" area="Technician"></user-card>
-      <user-card userid="1" name="Adrià Vilanova Martínez" username="avm99963" email="jocdeladria@gmail.com" area="Technician"></user-card>
-      <user-card userid="1" name="Adrià Vilanova Martínez" username="avm99963" email="jocdeladria@gmail.com" area="Technician"></user-card>
-      <user-card userid="1" name="Adrià Vilanova Martínez" username="avm99963" email="jocdeladria@gmail.com" area="Technician"></user-card>
-      <user-card userid="1" name="Adrià Vilanova Martínez" username="avm99963" email="jocdeladria@gmail.com" area="Technician"></user-card>
-      <user-card userid="1" name="Adrià Vilanova Martínez" username="avm99963" email="jocdeladria@gmail.com" area="Technician"></user-card>
-      <user-card userid="1" name="Adrià Vilanova Martínez" username="avm99963" email="jocdeladria@gmail.com" area="Technician"></user-card>
-      <user-card userid="1" name="Adrià Vilanova Martínez" username="avm99963" email="jocdeladria@gmail.com" area="Technician"></user-card>
-      <user-card userid="1" name="Adrià Vilanova Martínez" username="avm99963" email="jocdeladria@gmail.com" area="Technician"></user-card>
-      <user-card userid="1" name="Adrià Vilanova Martínez" username="avm99963" email="jocdeladria@gmail.com" area="Technician"></user-card>
-      <user-card userid="1" name="Adrià Vilanova Martínez" username="avm99963" email="jocdeladria@gmail.com" area="Technician"></user-card>
-      <user-card userid="1" name="Adrià Vilanova Martínez" username="avm99963" email="jocdeladria@gmail.com" area="Technician"></user-card>
-      <user-card userid="1" name="Adrià Vilanova Martínez" username="avm99963" email="jocdeladria@gmail.com" area="Technician"></user-card>
-      <user-card userid="1" name="Adrià Vilanova Martínez" username="avm99963" email="jocdeladria@gmail.com" area="Technician"></user-card>
+      <core-animated-pages selected="{{selectedPage}}" transitions="slide-up cross-fade hero-transition" on-core-animated-pages-transition-end="{{complete}}">
+        <section id="users">
+          <template repeat="{{response.users as user}}">
+            <user-card selectedPage="{{selectedPage}}" userid="{{user.id}}" name="{{user.name}} {{user.surname}}" username="{{user.username}}" email="{{user.email}}" area="{{user.area}}"></user-card>
+          </template>
+        </section>
+        <section id="history">
+          <user-history selectedPage="{{selectedPage}}" userid="{{selectedPage.user.id}}"></user-history>
+        </section>
+        <section id="edit">
+          Hello World :-)
+        </section>
+        <section id="add">
+          <user-add selectedPage="{{selectedPage}}" on-user-added="{{added}}"></user-add>
+        </section>
+      </core-animated-pages>
+      <paper-fab icon="add" id="add" on-click="{{add}}"></paper-fab>
+      <div style="display: block; height: 10px;">&nbsp;</div>
     </div>
+    <paper-toast id="userAddedToast" text="El usuario se ha añadido satisfactoriamente"></paper-toast>
     <link rel="stylesheet" href="dashboard-users.css">
   </template>
 
   <script>
     Polymer({
-      
+      add: function() {
+        this.selectedPage = 3;
+      },
+      added: function() {
+        this.$.userAddedToast.show();
+        this.$.ajax.go();
+      }
     });
   </script>
 </polymer-element>

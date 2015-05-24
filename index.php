@@ -18,11 +18,9 @@ if (loggedin()) {
 
     <link rel="import" href="bower_components/polymer/polymer.html">
 
-    <link rel="import" href="bower_components/core-elements/core-elements.html">
-    <link rel="import" href="bower_components/paper-elements/paper-elements.html">
-    <link rel="import" href="bower_components/font-roboto/roboto.html">
     <link rel="import" href="custom_elements/login-app/login-app.html">
     <link rel="import" href="custom_elements/common-elements/common-elements.html">
+    <link rel="import" href="bower_components/font-roboto/roboto.html">
   </head>
   <body fullbleed layout vertical unresolved>
     <login-app appname="<?=$CONF["appname"]?>" flex>
@@ -32,6 +30,8 @@ if (loggedin()) {
           echo "<ipad-alert type='info'>Por favor, rellena todo el formulario</ipad-alert>";
         if ($_GET["msg"] == "loginwrong")
           echo "<ipad-alert type='danger'>Los datos de inicio de sesión no eran correctos</ipad-alert>";
+        if ($_GET["msg"] == "logoutsuccess")
+          echo "<ipad-alert type='info'>Se ha cerrado sesión correctamente</ipad-alert>";
       }
       ?>
     </login-app>

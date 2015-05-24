@@ -1,3 +1,9 @@
+<link rel="import" href="../../bower_components/core-header-panel/core-header-panel.html">
+<link rel="import" href="../../bower_components/core-toolbar/core-toolbar.html">
+<link rel="import" href="../../bower_components/paper-shadow/paper-shadow.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input-decorator.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+
 <polymer-element layout vertical on-keypress="{{keypressHandler}}" attributes="appname" name="install-app">
   <template>
     <core-header-panel flex>
@@ -14,18 +20,13 @@
           <paper-input-decorator label="Apellidos" floatingLabel error="¡Este campo es obligatorio!" id="surname"><input is="core-input" type"text" required name="surname"></paper-input-decorator>
           <paper-input-decorator label="Email" floatingLabel error="¡Este campo es obligatorio!" id="email"><input is="core-input" type"email" required name="email"></paper-input-decorator>
           <paper-input-decorator label="Contraseña" floatingLabel error="¡Este campo es obligatorio!" id="password"><input is="core-input" type="password" required name="password"></paper-input-decorator>
-          <paper-button id="install" raised on-click="{{install}}">Comprobar</paper-button>
+          <paper-button id="install" raised on-click="{{install}}">Instalar</paper-button>
           <input type="submit" style="display:none" name="submitButton" id="submitButton">
         </form>
       </paper-shadow>
     </core-header-panel>
     <link rel="stylesheet" href="../../css/app-styles.css">
   </template>
-
-  <link rel="import" href="../../bower_components/polymer/polymer.html">
-  <link rel="import" href="../../bower_components/core-elements/core-elements.html">
-  <link rel="import" href="../../bower_components/paper-elements/paper-elements.html">
-  <link rel="import" href="../../bower_components/font-roboto/roboto.html">
 
   <script>
     Polymer({

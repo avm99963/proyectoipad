@@ -16,14 +16,10 @@ if (istechnician()) {
 
     <link rel="import" href="bower_components/polymer/polymer.html">
 
-    <link rel="import" href="bower_components/core-elements/core-elements.html">
-    <link rel="import" href="bower_components/paper-elements/paper-elements.html">
-    <link rel="import" href="bower_components/font-roboto/roboto.html">
-    <link rel="import" href="bower_components/core-icons/social-icons.html">
-    <link rel="import" href="custom_elements/dashboard-app/dashboard-app.html">
     <link rel="import" href="custom_elements/dashboard-users/dashboard-users.html">
-    <link rel="import" href="custom_elements/user-card/user-card.html">
+    <link rel="import" href="custom_elements/dashboard-app/dashboard-app.html">
     <link rel="import" href="custom_elements/common-elements/common-elements.html">
+    <link rel="import" href="bower_components/font-roboto/roboto.html">
   </head>
   <body fullbleed layout vertical unresolved>
     <dashboard-app appname="<?=$CONF["appname"]?>" sidebar="users" flex>

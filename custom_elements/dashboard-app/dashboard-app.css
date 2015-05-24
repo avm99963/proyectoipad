@@ -15,6 +15,14 @@ core-header-panel {
   padding: 20px;
 }
 
+#history, #edit, #add {
+	z-index: 10;
+}
+
+#users {
+	z-index: 5;
+}
+
 /* drawer is always visible on a wide screen
    so menu button isn't required */
 core-drawer-panel:not([narrow]) #navicon {
