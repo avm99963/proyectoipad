@@ -5,9 +5,6 @@ require_once("lib/password.php");
 // Timezone
 date_default_timezone_set("Europe/Madrid");
 
-// Aquí se recoge la configuración
-require("config.php");
-
 // Aquí se accede a la BD y a la sesión
 $con = @mysqli_connect($CONF["host_db"], $CONF["usuario_db"], $CONF["clave_db"], $CONF["nombre_db"]) or die("<center>Check Mysqli settings in config.php</center>"); // Conectamos y seleccionamos BD
 
