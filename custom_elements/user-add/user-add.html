@@ -6,9 +6,11 @@
 <link rel="import" href="../../bower_components/paper-dropdown/paper-dropdown.html">
 <link rel="import" href="../../bower_components/core-menu/core-menu.html">
 <link rel="import" href="../../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
 
 <polymer-element layout vertical attributes="selectedPage" name="user-add">
   <template>
+    <core-ajax id="ajax" url="../../ajax/adduser.php" method="POST" handleAs="json" response="{{response}}" on-core-complete="{{added}}"></core-ajax>
     <paper-shadow slide-up="{{selectedPage === 2}}" cross-fade="{{selectedPage === 0}}" z="1">
       <paper-icon-button id="close" icon="close" on-click="{{close}}"></paper-icon-button>
       <h3 hero hero-id="name">Añadir usuario</h3>
@@ -37,6 +39,16 @@
         this.selectedPage = 0;
       },
       add: function() {
+        var json = {"name": this.$.name.input.value, "surname": this.$.surname.input.value, "area": this.$.area.input.value, "email": this.$.email.input.value, "password": this.$.password.input.value, "type": this.technician};
+        console.log(json);
+        var params = JSON.stringify(json);
+        if (type == 1) {
+          params.username = this.$.username
+        }
+        this.$.ajax.params = params;
+        this.$.ajax.go();
+      },
+      added: function() {
         this.fire("user-added");
         this.close();
       }
